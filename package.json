@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "format": "prettier --write . --ignore-path .gitignore",
-    "dev": "next dev",
-    "build": "next build",
+    "dev": "rimraf .next && next dev",
+    "build": "rimraf .next && next build",
     "start": "next start",
     "lint": "next lint",
     "lint:fix": "pnpm format && pnpm lint -- --fix"
