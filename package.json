@@ -11,17 +11,24 @@
     "lint:fix": "pnpm format && pnpm lint -- --fix"
   },
   "dependencies": {
+    "@portabletext/react": "^3.0.11",
+    "@sanity/client": "^6.8.6",
+    "@sanity/image-url": "^1.0.2",
+    "@sanity/vision": "3",
     "@studio-freight/react-lenis": "^0.0.38",
     "date-fns": "^2.30.0",
     "gsap": "^3.12.2",
     "lucide-react": "^0.293.0",
     "next": "14.0.3",
+    "next-sanity": "^5.5.10",
     "react": "^18",
     "react-dom": "^18",
     "react-intersection-observer": "^9.5.3",
+    "sanity": "3",
     "server-only": "^0.0.1",
     "sharp": "^0.32.6",
-    "split-type": "^0.3.4"
+    "split-type": "^0.3.4",
+    "styled-components": "6"
   },
   "devDependencies": {
     "@ianvs/prettier-plugin-sort-imports": "^4.1.1",
