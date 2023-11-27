@@ -1,7 +1,7 @@
 import { defineArrayMember, defineField, defineType } from 'sanity';
 
 export default defineType({
-  name: 'projects',
+  name: 'project_list',
   title: 'Project',
   description: 'Project Section',
   type: 'object',

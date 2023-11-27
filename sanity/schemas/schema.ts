@@ -23,5 +23,6 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     project,
     skillset,
     skills,
+    // sitemeta
   ],
 };
