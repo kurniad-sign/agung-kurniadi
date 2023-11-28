@@ -1,7 +1,9 @@
-export default function Home() {
-  return (
-    <main>
-      <h1>Hello World, Agung Kurniadi</h1>
-    </main>
-  );
+import { homeQuery, runQuery } from '@/sanity/lib/queries';
+
+import { Home } from './components/home';
+
+export default async function Homepage() {
+  const homeData = await runQuery(homeQuery);
+
+  return <Home data={homeData} />;
 }

@@ -1,3 +1,7 @@
+html {
+  font-size: calc(100vw / 1440 * 10);
+}
+
 html.lenis {
   height: auto;
 }
@@ -22,4 +26,19 @@ body {
   background-color: $background-color;
   color: $text-color;
   font-family: var(--font-general-sans);
+  font-weight: 450;
+  font-size: 1.6rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 600;
+}
+
+p {
+  letter-spacing: 0.2px;
 }
