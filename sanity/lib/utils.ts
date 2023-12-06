@@ -1,7 +1,10 @@
 import createImageUrlBuilder from '@sanity/image-url';
+import { makeSafeQueryRunner } from 'groqd';
 import type { Image } from 'sanity';
 
 import { dataset, projectId } from '@/sanity/lib/api';
+
+import { client } from './client';
 
 const imageBuilder = createImageUrlBuilder({
   projectId: projectId || '',
@@ -30,3 +33,5 @@ export function resolveHref(
       return undefined;
   }
 }
+
+export const runQuery = makeSafeQueryRunner((query) => client.fetch(query));
