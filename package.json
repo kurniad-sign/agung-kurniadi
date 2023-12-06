@@ -35,7 +35,8 @@
     "server-only": "^0.0.1",
     "sharp": "^0.32.6",
     "split-type": "^0.3.4",
-    "styled-components": "6"
+    "styled-components": "6",
+    "zod": "^3.22.4"
   },
   "devDependencies": {
     "@ianvs/prettier-plugin-sort-imports": "^4.1.1",

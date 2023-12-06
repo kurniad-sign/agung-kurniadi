@@ -80,6 +80,9 @@ dependencies:
   styled-components:
     specifier: '6'
     version: 6.1.1(react-dom@18.2.0)(react@18.2.0)
+  zod:
+    specifier: ^3.22.4
+    version: 3.22.4
 
 devDependencies:
   '@ianvs/prettier-plugin-sort-imports':
