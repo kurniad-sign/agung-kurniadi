@@ -24,14 +24,7 @@ export function ReactLenisProvider({
   }, []);
 
   return (
-    <ReactLenis
-      ref={lenisRef}
-      autoRaf={false}
-      root
-      options={{
-        lerp: 0.2,
-      }}
-    >
+    <ReactLenis ref={lenisRef} autoRaf={false} root>
       {children}
     </ReactLenis>
   );
