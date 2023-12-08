@@ -1,7 +1,3 @@
-html {
-  font-size: calc(100vw / 1440 * 10);
-}
-
 html.lenis {
   height: auto;
 }
@@ -25,9 +21,9 @@ html.lenis {
 body {
   background-color: $background-color;
   color: $text-color;
-  font-family: var(--font-general-sans);
+  font-family: var(--font-satoshi);
   font-weight: 450;
-  font-size: 1.6rem;
+  font-size: 16px;
 }
 
 h1,
@@ -37,8 +33,13 @@ h4,
 h5,
 h6 {
   font-weight: 600;
+  font-family: var(--font-sora);
 }
 
 p {
   letter-spacing: 0.2px;
+}
+
+.container {
+  padding: 0 4vw;
 }
