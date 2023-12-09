@@ -7,7 +7,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowRight, Asterisk } from 'lucide-react';
 
 import { useIsomorphicLayoutEffect } from '@/hooks/use-isomorphic';
-import { animatePanel } from '@/lib/animation/panel-animation';
+import { useScrollPanel } from '@/hooks/use-scroll-animation';
 import { HomeQueryType } from '@/sanity/lib/types';
 
 import { HeroTime } from './hero-time';
@@ -16,35 +16,46 @@ gsap.registerPlugin(ScrollTrigger);
 
 export function Home({ data }: { data: HomeQueryType }) {
   const { about, hero, project_list, skills } = data;
-
-  const mainRef = useRef<HTMLElement>(null);
-  const sectionAboutRef = useRef<HTMLElement>(null);
-  const sectionColumnRef = useRef<HTMLDivElement>(null);
-  const columnWrapRef = useRef<HTMLDivElement[]>([]);
+  const { columnWrapRef, mainRef, sectionAboutRef, sectionColumnRef } =
+    useScrollPanel();
 
   const pushColumnWrapRef = (el: HTMLDivElement) =>
     columnWrapRef.current.push(el);
 
+  const scrollContainerRef = useRef<HTMLUListElement>(null);
+  const scrollWrapperRef = useRef<HTMLDivElement>(null);
+  const projectRef = useRef<HTMLElement>(null);
+
   useIsomorphicLayoutEffect(() => {
     const context = gsap.context(() => {
+      if (!scrollContainerRef.current) {
+        return;
+      }
+
+      const contentWidth =
+        scrollContainerRef.current.offsetWidth - window.innerWidth;
+
       const timeline = gsap.timeline({
         scrollTrigger: {
-          start: 0,
-          end: 'max',
-          scrub: true,
+          trigger: scrollWrapperRef.current,
+          start: 'center center',
+          end: `+=${contentWidth}`,
+          scrub: true, // Enable scrubbing for smoother animation
+          pin: true, // Pin the container during the animation
+          anticipatePin: 1, // Improve the pinning experience
         },
       });
 
-      timeline.add(
-        animatePanel({
-          target: sectionColumnRef,
-          triggerTarget: sectionAboutRef,
-          endTarget: columnWrapRef,
-        })
-      );
-    }, mainRef);
+      timeline.to(scrollContainerRef.current, {
+        x: -contentWidth - 128, // Scroll to the left (negative x)
+        ease: 'none',
+      });
+    }, projectRef);
 
-    return () => context.revert();
+    return () => {
+      context.revert();
+      ScrollTrigger.getAll().forEach((instance) => instance.kill());
+    };
   }, []);
 
   return (
@@ -152,8 +163,8 @@ export function Home({ data }: { data: HomeQueryType }) {
         </div>
       </section>
 
-      <section className="section" ref={sectionAboutRef}>
-        <div className="section--about container">
+      <section className="section section--about" ref={sectionAboutRef}>
+        <div className="container">
           <figure className="about__image">
             <Image
               src={about.image.asset.url}
@@ -173,37 +184,31 @@ export function Home({ data }: { data: HomeQueryType }) {
       <section className="section section--project">
         <div className="container">
           <h2 className="project__title">{project_list.title}</h2>
-          <ul className="project__list">
-            {project_list.list.map((project) => (
-              <li key={project._id} className="project__list__item">
-                {/* <a target="_blank" href={project.site} rel="noopener noreferrer"> */}
-                <div className="project__list__item__content">
-                  <h3 className="project__list__item__title">
+          <div className="project__list__wrapper" ref={scrollWrapperRef}>
+            <ul className="project__list" ref={scrollContainerRef}>
+              {project_list.list.map((project) => (
+                <li key={project._id} className="project__list__item">
+                  {/* <a target="_blank" href={project.site} rel="noopener noreferrer"> */}
+                  {/* <h3 className="project__list__item__title">
                     {project.title}
-                  </h3>
-                  <div className="project__list__item__tag">
-                    {project.tags.map((tag, index) => (
-                      <div key={index}>{tag}</div>
-                    ))}
-                  </div>
-                </div>
-                <figure className="project__list__item__image">
-                  <Image
-                    src={project.coverImage.asset.url}
-                    alt="Project List"
-                    width={310}
-                    height={150}
-                  />
-                </figure>
-                {/* </a> */}
-              </li>
-            ))}
-          </ul>
+                  </h3> */}
+                  <figure className="project__list__item__image">
+                    <Image
+                      src={project.coverImage.asset.url}
+                      alt="Project List"
+                      fill
+                    />
+                  </figure>
+                  {/* </a> */}
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </section>
 
-      <section className="section">
-        <div className="section--skills container">
+      <section className="section section--skills">
+        <div className="container">
           <h2 className="skill__title">{skills.title}</h2>
           <div className="skill__content">
             <div className="skill__icon">
