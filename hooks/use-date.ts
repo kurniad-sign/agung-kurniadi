@@ -27,7 +27,7 @@ export const useDate = () => {
     hour: 'numeric',
     hour12: true,
     minute: 'numeric',
-    second: 'numeric',
+    // second: 'numeric',
   });
 
   return {

@@ -7,7 +7,20 @@ import { home } from './types';
 export const homeDataQuery = groq`
   *[_type == "home"][1]{
     _id,
-    about,
+    about{
+      ...,
+      image{
+        _type,
+        caption,
+         asset->{
+            metadata{
+              dimensions,
+              blurHash
+            },
+            url
+          },
+      },
+    },
     hero,
     project_list{
       _type,

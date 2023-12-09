@@ -16,5 +16,25 @@ export default defineType({
       title: 'About Description',
       type: 'text',
     }),
+    defineField({
+      name: 'image',
+      title: 'About Image',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
+      fields: [
+        defineField({
+          name: 'caption',
+          type: 'string',
+          title: 'Caption',
+        }),
+        defineField({
+          name: 'attribution',
+          type: 'string',
+          title: 'Attribution',
+        }),
+      ],
+    }),
   ],
 });

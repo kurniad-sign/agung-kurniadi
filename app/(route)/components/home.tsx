@@ -1,18 +1,54 @@
 'use client';
 
+import { useRef } from 'react';
 import Image from 'next/image';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowRight, Asterisk } from 'lucide-react';
 
-import { useDate } from '@/hooks/use-date';
+import { useIsomorphicLayoutEffect } from '@/hooks/use-isomorphic';
+import { animatePanel } from '@/lib/animation/panel-animation';
 import { HomeQueryType } from '@/sanity/lib/types';
+
+import { HeroTime } from './hero-time';
+
+gsap.registerPlugin(ScrollTrigger);
 
 export function Home({ data }: { data: HomeQueryType }) {
   const { about, hero, project_list, skills } = data;
 
-  const { date, time } = useDate();
+  const mainRef = useRef<HTMLElement>(null);
+  const sectionAboutRef = useRef<HTMLElement>(null);
+  const sectionColumnRef = useRef<HTMLDivElement>(null);
+  const columnWrapRef = useRef<HTMLDivElement[]>([]);
+
+  const pushColumnWrapRef = (el: HTMLDivElement) =>
+    columnWrapRef.current.push(el);
+
+  useIsomorphicLayoutEffect(() => {
+    const context = gsap.context(() => {
+      const timeline = gsap.timeline({
+        scrollTrigger: {
+          start: 0,
+          end: 'max',
+          scrub: true,
+        },
+      });
+
+      timeline.add(
+        animatePanel({
+          target: sectionColumnRef,
+          triggerTarget: sectionAboutRef,
+          endTarget: columnWrapRef,
+        })
+      );
+    }, mainRef);
+
+    return () => context.revert();
+  }, []);
 
   return (
-    <main>
+    <main ref={mainRef}>
       <section className="section section--hero">
         <div className="container">
           <header className="hero__header">
@@ -20,10 +56,7 @@ export function Home({ data }: { data: HomeQueryType }) {
           </header>
           <div className="hero__content">
             <p className="hero__description">{hero.description}</p>
-            <div className="hero__time">
-              <p>{date}</p>
-              <p>{time}</p>
-            </div>
+            <HeroTime />
             <div className="hero__scroll">
               <div className="hero__scroll-text">
                 <p>
@@ -42,14 +75,97 @@ export function Home({ data }: { data: HomeQueryType }) {
         </div>
       </section>
 
-      <section className="section">
-        <div className="section--about container">
-          <div className="about__icon">
-            <ArrowRight size={60} />
+      <section className="section section--columns" ref={sectionColumnRef}>
+        <div className="columns">
+          <div className="column-wrap" ref={pushColumnWrapRef}>
+            <div className="column">
+              <div className="column__item">
+                <div
+                  className="column__item-img"
+                  style={{ backgroundImage: 'url(images/project-4.png)' }}
+                />
+              </div>
+              <div className="column__item">
+                <div
+                  className="column__item-img"
+                  style={{ backgroundImage: 'url(images/project-1.png)' }}
+                />
+              </div>
+              <div className="column__item">
+                <div
+                  className="column__item-img"
+                  style={{ backgroundImage: 'url(images/project-3.png)' }}
+                />
+              </div>
+            </div>
           </div>
+          <div className="column-wrap" ref={pushColumnWrapRef}>
+            <div className="column">
+              <div className="column__item">
+                <div
+                  className="column__item-img"
+                  style={{ backgroundImage: 'url(images/project-4.png)' }}
+                />{' '}
+              </div>
+              <div className="column__item">
+                <div
+                  className="column__item-img"
+                  style={{ backgroundImage: 'url(images/project-2.png)' }}
+                />
+              </div>
+              <div className="column__item">
+                <div
+                  className="column__item-img"
+                  style={{ backgroundImage: 'url(images/project-4.png)' }}
+                />{' '}
+              </div>
+              <div className="column__item">
+                <div
+                  className="column__item-img"
+                  style={{ backgroundImage: 'url(images/project-1.png)' }}
+                />
+              </div>
+            </div>
+          </div>
+          <div className="column-wrap" ref={pushColumnWrapRef}>
+            <div className="column">
+              <div className="column__item">
+                <div
+                  className="column__item-img"
+                  style={{ backgroundImage: 'url(images/project-2.png)' }}
+                />
+              </div>
+              <div className="column__item">
+                <div
+                  className="column__item-img"
+                  style={{ backgroundImage: 'url(images/project-3.png)' }}
+                />
+              </div>
+              <div className="column__item">
+                <div
+                  className="column__item-img"
+                  style={{ backgroundImage: 'url(images/project-1.png)' }}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="section" ref={sectionAboutRef}>
+        <div className="section--about container">
+          <figure className="about__image">
+            <Image
+              src={about.image.asset.url}
+              alt={about.image.caption as string}
+              fill
+            />
+          </figure>
           <div className="about__content">
-            <h2 className="about__title">{about.title}</h2>
-            <p className="about__description">{about.description}</p>
+            <div className="about__text">
+              <h2 className="about__title">{about.title}</h2>
+              <p className="about__description">{about.description}</p>
+            </div>
           </div>
         </div>
       </section>

@@ -8,6 +8,7 @@ const Slug = z
 
 const Image = z.object({
   _type: z.string(),
+  caption: z.string().nullable().optional(),
   asset: z.object({
     metadata: z.object({
       dimensions: z.object({
@@ -44,6 +45,7 @@ export const home = z.object({
   about: z.object({
     _type: z.string(),
     description: z.string(),
+    image: Image,
     title: z.string(),
   }),
   hero: z.object({
