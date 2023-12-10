@@ -4,7 +4,7 @@ import { useRef } from 'react';
 import Image from 'next/image';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ArrowRight, Asterisk } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, Asterisk } from 'lucide-react';
 
 import { useIsomorphicLayoutEffect } from '@/hooks/use-isomorphic';
 import { useScrollPanel } from '@/hooks/use-scroll-animation';
@@ -188,18 +188,38 @@ export function Home({ data }: { data: HomeQueryType }) {
             <ul className="project__list" ref={scrollContainerRef}>
               {project_list.list.map((project) => (
                 <li key={project._id} className="project__list__item">
-                  {/* <a target="_blank" href={project.site} rel="noopener noreferrer"> */}
-                  {/* <h3 className="project__list__item__title">
-                    {project.title}
-                  </h3> */}
-                  <figure className="project__list__item__image">
-                    <Image
-                      src={project.coverImage.asset.url}
-                      alt="Project List"
-                      fill
-                    />
-                  </figure>
-                  {/* </a> */}
+                  <a
+                    target="_blank"
+                    href={project.site}
+                    rel="noopener noreferrer"
+                  >
+                    <figure className="project__list__item__image">
+                      <div className="project__list__item__content">
+                        <div>
+                          <h4 className="project__list__item__title">
+                            {project.title}
+                          </h4>
+                          <p className="project__list__item__description">
+                            {project.description}
+                          </p>
+                          <a
+                            href={project.site}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="project__list__item__link"
+                          >
+                            Visit Site
+                            <ArrowUpRight size={24} />
+                          </a>
+                        </div>
+                      </div>
+                      <Image
+                        src={project.coverImage.asset.url}
+                        alt="Project List"
+                        fill
+                      />
+                    </figure>
+                  </a>
                 </li>
               ))}
             </ul>

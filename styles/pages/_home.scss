@@ -219,6 +219,7 @@
       flex-direction: column;
       flex-wrap: nowrap;
       scroll-snap-align: start;
+      cursor: pointer;
     }
 
     &__item__image {
@@ -228,39 +229,65 @@
       justify-content: center;
       min-width: 35em;
       max-width: 35em;
+      overflow: hidden;
       height: 100vh;
-
       img {
+        transition: all 0.5s $motion;
         object-fit: cover;
-        width: 100%;
-        height: 100%;
+      }
+      &:hover img {
+        scale: 1.1;
+      }
+      &:hover > div {
+        display: block;
+        opacity: 1;
       }
     }
 
     &__item__content {
+      padding: 2rem;
       position: relative;
-    }
-
-    &__item__tag {
-      display: flex;
-      gap: 1.25rem;
+      background: rgba($color: $text-color, $alpha: 0.7);
+      z-index: 200;
+      width: 100%;
+      height: 100%;
+      color: $background-color;
+      opacity: 0;
+      transition: all 0.5s $motion;
 
       & div {
-        font-size: 0.875rem;
-        padding: 0.5rem 0.75rem;
-        border: 1px solid $border-color;
-        border-radius: 99px;
-        color: $text-secondary-color;
-        font-weight: 400;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        padding: 2rem;
+        height: 250px;
+        display: flex;
+        flex-direction: column;
       }
     }
 
     &__item__title {
-      font-size: 1.25rem;
+      font-size: 2.25rem;
       font-family: var(--font-satoshi);
-      font-weight: 500;
-      margin-bottom: 1.25rem;
+      font-weight: 650;
       line-height: 1;
+      margin-bottom: 0.625rem;
+    }
+    &__item__description {
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+    &__item__link {
+      display: inline-flex;
+      align-items: center;
+      margin-top: auto;
+      color: $background-color;
+      font-size: 1.25rem;
+      text-decoration: none;
+
+      svg {
+        margin-inline-start: 0.25rem;
+      }
     }
   }
 }
@@ -270,23 +297,21 @@
     font-size: 2.5rem;
     margin-bottom: 2rem;
   }
-
   &__content {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     gap: 2rem;
   }
-
   &__list {
-    grid-column: 2 / span 7;
+    grid-column: 2 / span 6;
     display: flex;
     flex-wrap: wrap;
     gap: 1.25rem;
-
     & > div {
       font-size: 3rem;
+      font-family: var(--font-satoshi), sans-serif;
       text-transform: uppercase;
-      font-weight: 600;
+      font-weight: 800;
       color: transparent;
       -webkit-text-stroke: 2px $text-color;
       -webkit-text-fill-color: $background-color;
