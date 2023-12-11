@@ -5,10 +5,10 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Asterisk } from 'lucide-react';
 
-import { RunningText } from '@/components/shared/running-text';
 import { useScrollPanel } from '@/hooks/use-scroll-animation';
 import { HomeQueryType } from '@/sanity/lib/types';
 
+import { CallToAction } from './cta';
 import { HeroTime } from './hero-time';
 import { Project } from './project';
 import { Skills } from './skills';
@@ -148,12 +148,7 @@ export function Home({ data }: { data: HomeQueryType }) {
 
       <Project {...project_list} />
       <Skills {...skills} />
-
-      <section className="section section--cta">
-        <RunningText>
-          Let&apos;s Talk <Asterisk />
-        </RunningText>
-      </section>
+      <CallToAction />
 
       <section className="section">
         <h1>test</h1>
