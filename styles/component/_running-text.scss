@@ -21,9 +21,10 @@
   transition: all 1s ease;
 
   &__text {
-    font-weight: 600;
+    font-weight: 500;
     width: 100%;
     margin-left: 2rem;
+    font-family: var(--font-sora), sans-serif;
     display: flex;
     align-items: center;
     line-height: 1;

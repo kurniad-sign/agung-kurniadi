@@ -29,3 +29,9 @@ export const switzer = localFont({
   display: 'swap',
   variable: '--font-switzer',
 });
+
+export const manrope = localFont({
+  src: '../public/fonts/Manrope-Variable.ttf',
+  display: 'swap',
+  variable: '--font-manrope',
+});

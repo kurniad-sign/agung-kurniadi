@@ -13,8 +13,6 @@ import { HeroTime } from './hero-time';
 import { Project } from './project';
 import { Skills } from './skills';
 
-// const Project = dynamic(() => import('./project').then((comp) => comp.Project));
-
 gsap.registerPlugin(ScrollTrigger);
 
 export function Home({ data }: { data: HomeQueryType }) {

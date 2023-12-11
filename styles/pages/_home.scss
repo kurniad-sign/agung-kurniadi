@@ -127,15 +127,16 @@
     font-weight: 650;
   }
   &__description {
-    font-size: 2rem;
-    font-weight: 450;
-    width: 30rem;
-    // letter-spacing: -1px;
-    line-height: 1.7;
+    font-size: 2.25rem;
+    font-weight: 500;
+    font-stretch: extra-condensed;
+    width: 35rem;
+    letter-spacing: -0.3px;
+    // line-height: 1.7;
   }
   &__time {
-    font-size: 1.25rem;
-    letter-spacing: -1px;
+    font-size: 1rem;
+    letter-spacing: -1.25px;
   }
   &__scroll {
     position: relative;
@@ -159,7 +160,8 @@
       top: 0;
       left: 50%;
       font-size: 1.125rem;
-      font-weight: 600;
+      font-weight: 500;
+      font-family: var(--font-sora), sans-serif;
       transform-origin: 0 80px;
     }
   }
@@ -193,12 +195,12 @@
     letter-spacing: -1.5px;
   }
   &__description {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     color: $text-secondary-color;
-    line-height: 1.7;
-    font-weight: 450;
+    line-height: 1.8;
+    font-weight: 500;
     white-space: pre-wrap;
-    // letter-spacing: -0.3px;
+    letter-spacing: -0.2px;
   }
 }
 
@@ -301,17 +303,52 @@
 }
 
 .skill {
-  &__title {
-    font-size: 2.5rem;
-    margin-bottom: 2rem;
-  }
-  &__content {
+  &__wrapper {
+    border-bottom: 1px solid $border-color;
+    border-top: 1px solid $border-color;
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     gap: 2rem;
   }
+
+  &__header {
+    border-right: 1px solid $border-color;
+    grid-column: 1 / span 5;
+    padding-top: 5rem;
+  }
+
+  &__title {
+    font-size: 4rem;
+    letter-spacing: -0.8px;
+    line-height: 1;
+  }
+  &__content {
+    grid-column: 6 / span 7;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    padding: 5rem 2rem;
+    &__item > * + * {
+      margin-block-start: 1rem;
+    }
+    &__title {
+      font-size: 1.5rem;
+      font-family: var(--font-manrope), sans-serif;
+      font-weight: 650;
+      letter-spacing: -0.3px;
+      line-height: 1;
+    }
+    &__description {
+      color: $text-secondary-color;
+      // font-size: 0.875rem;
+    }
+    &__image {
+      display: flex;
+      gap: 1rem;
+    }
+  }
   &__list {
-    grid-column: 2 / span 6;
+    // grid-column: 2 / span 6;
     display: flex;
     flex-wrap: wrap;
     gap: 2rem;

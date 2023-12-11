@@ -32,5 +32,16 @@ export default defineType({
         hotspot: true,
       },
     }),
+    defineField({
+      name: 'description',
+      title: 'Skill Description',
+      type: 'string',
+    }),
+    defineField({
+      name: 'image',
+      title: 'Image',
+      type: 'array',
+      of: [{ type: 'image' }],
+    }),
   ],
 });

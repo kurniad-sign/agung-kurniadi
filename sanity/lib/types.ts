@@ -37,7 +37,8 @@ const SkillList = z.object({
   _id: z.string(),
   name: z.string(),
   slug: z.string(),
-  logo: Image,
+  image: z.array(Image),
+  description: z.string(),
 });
 
 const ProjectList = z.object({

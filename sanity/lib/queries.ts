@@ -49,8 +49,11 @@ export const homeDataQuery = groq`
       title,
       list[]->{
         _id,
-        logo{
-          ...,
+        name,
+         "slug": slug.current,
+         description,
+         image[]{
+            ...,
           asset->{
             metadata{
               dimensions,
@@ -58,9 +61,7 @@ export const homeDataQuery = groq`
             },
             url
           }
-        },
-        name,
-         "slug": slug.current
+        }
       }
     }
   }

@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { clsx } from 'clsx';
 
 import { ReactLenisProvider } from '@/components/providers/react-lenis';
-import { satoshi, sora } from '@/lib/fonts';
+import { manrope, sora } from '@/lib/fonts';
 
 import '@/styles/index.scss';
 
@@ -18,7 +18,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={clsx(sora.variable, satoshi.variable)}>
+      <body className={clsx(sora.variable, manrope.variable)}>
         <ReactLenisProvider>{children}</ReactLenisProvider>
       </body>
     </html>
