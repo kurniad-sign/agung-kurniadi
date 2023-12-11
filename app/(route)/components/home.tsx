@@ -1,16 +1,19 @@
 'use client';
 
-import { useRef } from 'react';
 import Image from 'next/image';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ArrowRight, ArrowUpRight, Asterisk } from 'lucide-react';
+import { Asterisk } from 'lucide-react';
 
-import { useIsomorphicLayoutEffect } from '@/hooks/use-isomorphic';
+import { RunningText } from '@/components/shared/running-text';
 import { useScrollPanel } from '@/hooks/use-scroll-animation';
 import { HomeQueryType } from '@/sanity/lib/types';
 
 import { HeroTime } from './hero-time';
+import { Project } from './project';
+import { Skills } from './skills';
+
+// const Project = dynamic(() => import('./project').then((comp) => comp.Project));
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -21,42 +24,6 @@ export function Home({ data }: { data: HomeQueryType }) {
 
   const pushColumnWrapRef = (el: HTMLDivElement) =>
     columnWrapRef.current.push(el);
-
-  const scrollContainerRef = useRef<HTMLUListElement>(null);
-  const scrollWrapperRef = useRef<HTMLDivElement>(null);
-  const projectRef = useRef<HTMLElement>(null);
-
-  useIsomorphicLayoutEffect(() => {
-    const context = gsap.context(() => {
-      if (!scrollContainerRef.current) {
-        return;
-      }
-
-      const contentWidth =
-        scrollContainerRef.current.offsetWidth - window.innerWidth;
-
-      const timeline = gsap.timeline({
-        scrollTrigger: {
-          trigger: scrollWrapperRef.current,
-          start: 'center center',
-          end: `+=${contentWidth}`,
-          scrub: true, // Enable scrubbing for smoother animation
-          pin: true, // Pin the container during the animation
-          anticipatePin: 1, // Improve the pinning experience
-        },
-      });
-
-      timeline.to(scrollContainerRef.current, {
-        x: -contentWidth - 128, // Scroll to the left (negative x)
-        ease: 'none',
-      });
-    }, projectRef);
-
-    return () => {
-      context.revert();
-      ScrollTrigger.getAll().forEach((instance) => instance.kill());
-    };
-  }, []);
 
   return (
     <main ref={mainRef}>
@@ -116,7 +83,7 @@ export function Home({ data }: { data: HomeQueryType }) {
                 <div
                   className="column__item-img"
                   style={{ backgroundImage: 'url(images/project-4.png)' }}
-                />{' '}
+                />
               </div>
               <div className="column__item">
                 <div
@@ -128,7 +95,7 @@ export function Home({ data }: { data: HomeQueryType }) {
                 <div
                   className="column__item-img"
                   style={{ backgroundImage: 'url(images/project-4.png)' }}
-                />{' '}
+                />
               </div>
               <div className="column__item">
                 <div
@@ -181,66 +148,13 @@ export function Home({ data }: { data: HomeQueryType }) {
         </div>
       </section>
 
-      <section className="section section--project">
-        <div className="container">
-          <h2 className="project__title">{project_list.title}</h2>
-          <div className="project__list__wrapper" ref={scrollWrapperRef}>
-            <ul className="project__list" ref={scrollContainerRef}>
-              {project_list.list.map((project) => (
-                <li key={project._id} className="project__list__item">
-                  <a
-                    target="_blank"
-                    href={project.site}
-                    rel="noopener noreferrer"
-                  >
-                    <figure className="project__list__item__image">
-                      <div className="project__list__item__content">
-                        <div>
-                          <h4 className="project__list__item__title">
-                            {project.title}
-                          </h4>
-                          <p className="project__list__item__description">
-                            {project.description}
-                          </p>
-                          <a
-                            href={project.site}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="project__list__item__link"
-                          >
-                            Visit Site
-                            <ArrowUpRight size={24} />
-                          </a>
-                        </div>
-                      </div>
-                      <Image
-                        src={project.coverImage.asset.url}
-                        alt="Project List"
-                        fill
-                      />
-                    </figure>
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </section>
+      <Project {...project_list} />
+      <Skills {...skills} />
 
-      <section className="section section--skills">
-        <div className="container">
-          <h2 className="skill__title">{skills.title}</h2>
-          <div className="skill__content">
-            <div className="skill__icon">
-              <ArrowRight size={60} />
-            </div>
-            <div className="skill__list">
-              {skills.list.map((skill) => (
-                <div key={skill._id}>{skill.name}</div>
-              ))}
-            </div>
-          </div>
-        </div>
+      <section className="section section--cta">
+        <RunningText>
+          Let&apos;s Talk <Asterisk />
+        </RunningText>
       </section>
     </main>
   );

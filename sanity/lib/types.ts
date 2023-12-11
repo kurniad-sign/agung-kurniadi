@@ -33,11 +33,23 @@ const Project = z.object({
   tags: z.array(z.string()),
 });
 
-const Skill = z.object({
+const SkillList = z.object({
   _id: z.string(),
   name: z.string(),
   slug: z.string(),
   logo: Image,
+});
+
+const ProjectList = z.object({
+  _type: z.string(),
+  title: z.string(),
+  list: z.array(Project),
+});
+
+const Skills = z.object({
+  _type: z.string(),
+  title: z.string(),
+  list: z.array(SkillList),
 });
 
 export const home = z.object({
@@ -54,16 +66,10 @@ export const home = z.object({
     scroll_text: z.string(),
     title: z.string(),
   }),
-  project_list: z.object({
-    _type: z.string(),
-    title: z.string(),
-    list: z.array(Project),
-  }),
-  skills: z.object({
-    _type: z.string(),
-    title: z.string(),
-    list: z.array(Skill),
-  }),
+  project_list: ProjectList,
+  skills: Skills,
 });
 
 export type HomeQueryType = z.infer<typeof home>;
+export type ProjectListQuery = z.infer<typeof ProjectList>;
+export type SkillsQuery = z.infer<typeof Skills>;
