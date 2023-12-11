@@ -154,6 +154,10 @@ export function Home({ data }: { data: HomeQueryType }) {
           Let&apos;s Talk <Asterisk />
         </RunningText>
       </section>
+
+      <section className="section">
+        <h1>test</h1>
+      </section>
     </main>
   );
 }
