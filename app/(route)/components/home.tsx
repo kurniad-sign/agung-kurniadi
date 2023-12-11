@@ -58,47 +58,28 @@ export function Home({ data }: { data: HomeQueryType }) {
               <div className="column__item">
                 <div
                   className="column__item-img"
-                  style={{ backgroundImage: 'url(images/project-4.png)' }}
+                  style={{
+                    backgroundImage: 'url(images/project-4.png)',
+                    borderRadius: '0.75rem',
+                  }}
                 />
               </div>
               <div className="column__item">
                 <div
                   className="column__item-img"
-                  style={{ backgroundImage: 'url(images/project-1.png)' }}
+                  style={{
+                    backgroundImage: 'url(images/project-1.png)',
+                    borderRadius: '0.75rem',
+                  }}
                 />
               </div>
               <div className="column__item">
                 <div
                   className="column__item-img"
-                  style={{ backgroundImage: 'url(images/project-3.png)' }}
-                />
-              </div>
-            </div>
-          </div>
-          <div className="column-wrap" ref={pushColumnWrapRef}>
-            <div className="column">
-              <div className="column__item">
-                <div
-                  className="column__item-img"
-                  style={{ backgroundImage: 'url(images/project-4.png)' }}
-                />
-              </div>
-              <div className="column__item">
-                <div
-                  className="column__item-img"
-                  style={{ backgroundImage: 'url(images/project-2.png)' }}
-                />
-              </div>
-              <div className="column__item">
-                <div
-                  className="column__item-img"
-                  style={{ backgroundImage: 'url(images/project-4.png)' }}
-                />
-              </div>
-              <div className="column__item">
-                <div
-                  className="column__item-img"
-                  style={{ backgroundImage: 'url(images/project-1.png)' }}
+                  style={{
+                    backgroundImage: 'url(images/project-3.png)',
+                    borderRadius: '0.75rem',
+                  }}
                 />
               </div>
             </div>
@@ -108,19 +89,68 @@ export function Home({ data }: { data: HomeQueryType }) {
               <div className="column__item">
                 <div
                   className="column__item-img"
-                  style={{ backgroundImage: 'url(images/project-2.png)' }}
+                  style={{
+                    backgroundImage: 'url(images/project-4.png)',
+                    borderRadius: '0.75rem',
+                  }}
                 />
               </div>
               <div className="column__item">
                 <div
                   className="column__item-img"
-                  style={{ backgroundImage: 'url(images/project-3.png)' }}
+                  style={{
+                    backgroundImage: 'url(images/project-2.png)',
+                    borderRadius: '0.75rem',
+                  }}
                 />
               </div>
               <div className="column__item">
                 <div
                   className="column__item-img"
-                  style={{ backgroundImage: 'url(images/project-1.png)' }}
+                  style={{
+                    backgroundImage: 'url(images/project-4.png)',
+                    borderRadius: '0.75rem',
+                  }}
+                />
+              </div>
+              <div className="column__item">
+                <div
+                  className="column__item-img"
+                  style={{
+                    backgroundImage: 'url(images/project-1.png)',
+                    borderRadius: '0.75rem',
+                  }}
+                />
+              </div>
+            </div>
+          </div>
+          <div className="column-wrap" ref={pushColumnWrapRef}>
+            <div className="column">
+              <div className="column__item">
+                <div
+                  className="column__item-img"
+                  style={{
+                    backgroundImage: 'url(images/project-2.png)',
+                    borderRadius: '0.75rem',
+                  }}
+                />
+              </div>
+              <div className="column__item">
+                <div
+                  className="column__item-img"
+                  style={{
+                    backgroundImage: 'url(images/project-3.png)',
+                    borderRadius: '0.75rem',
+                  }}
+                />
+              </div>
+              <div className="column__item">
+                <div
+                  className="column__item-img"
+                  style={{
+                    backgroundImage: 'url(images/project-1.png)',
+                    borderRadius: '0.75rem',
+                  }}
                 />
               </div>
             </div>
