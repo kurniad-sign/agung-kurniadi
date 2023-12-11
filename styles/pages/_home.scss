@@ -98,6 +98,14 @@
     height: 100%;
     padding: 16rem 0;
   }
+
+  &--cta {
+    min-height: 100%;
+    padding-top: 4rem;
+    padding-bottom: 20rem;
+    overflow: hidden;
+    position: relative;
+  }
 }
 
 .hero {
@@ -306,15 +314,16 @@
     grid-column: 2 / span 6;
     display: flex;
     flex-wrap: wrap;
-    gap: 1.25rem;
+    gap: 2rem;
     & > div {
       font-size: 3rem;
       font-family: var(--font-satoshi), sans-serif;
       text-transform: uppercase;
       font-weight: 800;
-      color: transparent;
-      -webkit-text-stroke: 2px $text-color;
-      -webkit-text-fill-color: $background-color;
+      // color: transparent;
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
     }
   }
 }

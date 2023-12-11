@@ -1,0 +1,45 @@
+@keyframes animationLoop {
+  0% {
+    transform: translate3d(0%, 0px, 0px);
+  }
+  100% {
+    transform: translate3d(-50%, 0px, 0px);
+  }
+}
+
+.c-running-animation {
+  white-space: nowrap;
+  // height: 100%;
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  align-items: center;
+  justify-content: flex-start;
+  animation: animationLoop 10s linear infinite;
+  white-space: nowrap;
+  transition: all 1s ease;
+
+  &__text {
+    font-weight: 600;
+    width: 100%;
+    margin-left: 2rem;
+    display: flex;
+    align-items: center;
+    line-height: 1;
+    font-size: clamp(5rem, 5vw + 1rem, 10rem);
+    letter-spacing: -0.15rem;
+    text-transform: uppercase;
+    @include media('>=desktop') {
+      font-size: 10rem;
+      margin-left: 2rem;
+    }
+
+    svg {
+      margin-left: 2rem;
+      @include media('>=desktop') {
+        margin-left: 2rem;
+      }
+    }
+  }
+}
