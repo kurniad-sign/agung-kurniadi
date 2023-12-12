@@ -29,7 +29,12 @@
   border: 1px solid $text-color;
   border-radius: 25px;
   font-size: 0.875rem;
+  font-weight: 500;
   display: flex;
   align-items: center;
   gap: 0.25rem;
+  & > svg {
+    height: 14px;
+    width: 14px;
+  }
 }

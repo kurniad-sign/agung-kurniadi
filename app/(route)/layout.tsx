@@ -1,3 +1,4 @@
+import { Footer } from '@/components/shared/footer';
 import { Navigation } from '@/components/shared/navigation';
 import { makeNavigationQuery } from '@/sanity/lib/queries';
 import { NavigationType } from '@/sanity/types/navigation';
@@ -13,6 +14,7 @@ export default async function PageLayout({
     <>
       <Navigation data={navigation} />
       {children}
+      <Footer />
     </>
   );
 }

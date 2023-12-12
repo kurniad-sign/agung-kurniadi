@@ -25,7 +25,7 @@ export function Home({ data }: { data: HomeQueryType }) {
 
   return (
     <main ref={mainRef}>
-      <section className="section section--hero">
+      <section className="section section--hero" id="section-hero">
         <div className="container">
           <header className="hero__header">
             <h1 className="hero__title">{hero.title}</h1>
@@ -179,10 +179,6 @@ export function Home({ data }: { data: HomeQueryType }) {
       <Project {...project_list} />
       <Skills {...skills} />
       <CallToAction />
-
-      <section className="section">
-        <h1>test</h1>
-      </section>
     </main>
   );
 }
