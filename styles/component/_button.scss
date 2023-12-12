@@ -1,0 +1,19 @@
+.c-button {
+  display: inline-flex;
+  gap: 0.5rem;
+  align-items: center;
+  color: inherit;
+  background-color: hsla(197, 15%, 9%, 1);
+  color: $background-color;
+  padding: 0.75rem 1rem;
+  text-decoration: none;
+  border-radius: 25px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1;
+  transition: all 0.3s $motion;
+  cursor: pointer;
+  &:hover {
+    background-color: hsla(197, 15%, 9%, 0.85);
+  }
+}

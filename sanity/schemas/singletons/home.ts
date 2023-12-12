@@ -16,48 +16,13 @@ export default defineType({
       type: 'string',
       validation: (rule) => rule.required(),
     }),
-    // defineField({
-    //   name: 'overview',
-    //   description:
-    //     'Used both for the <meta> description tag for SEO, and the personal website subheader.',
-    //   title: 'Description',
-    //   type: 'array',
-    //   of: [
-    //     // Paragraphs
-    //     defineArrayMember({
-    //       lists: [],
-    //       marks: {
-    //         annotations: [
-    //           {
-    //             name: 'link',
-    //             type: 'object',
-    //             title: 'Link',
-    //             fields: [
-    //               {
-    //                 name: 'href',
-    //                 type: 'url',
-    //                 title: 'Url',
-    //               },
-    //             ],
-    //           },
-    //         ],
-    //         decorators: [
-    //           {
-    //             title: 'Italic',
-    //             value: 'em',
-    //           },
-    //           {
-    //             title: 'Strong',
-    //             value: 'strong',
-    //           },
-    //         ],
-    //       },
-    //       styles: [],
-    //       type: 'block',
-    //     }),
-    //   ],
-    //   validation: (rule) => rule.max(155).required(),
-    // }),
+    defineField({
+      name: 'overview',
+      description:
+        'Used both for the <meta> description tag for SEO, and the personal website subheader.',
+      title: 'Description',
+      type: 'text',
+    }),
     defineField({
       name: 'hero',
       title: 'Hero',

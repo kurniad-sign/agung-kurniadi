@@ -17,6 +17,7 @@ import { locate } from '@/sanity/plugins/locate';
 import { pageStructure, singletonPlugin } from './sanity/plugins/settings';
 import { schema } from './sanity/schemas/schema';
 import home from './sanity/schemas/singletons/home';
+import navigation from './sanity/schemas/singletons/navigation';
 import settings from './sanity/schemas/singletons/settings';
 
 const title =
@@ -33,7 +34,7 @@ export default defineConfig({
   plugins: [
     codeInput(),
     deskTool({
-      structure: pageStructure([home, settings]),
+      structure: pageStructure([home, settings, navigation]),
     }),
     presentationTool({
       locate,
@@ -47,7 +48,7 @@ export default defineConfig({
         },
       },
     }),
-    singletonPlugin([home.name, settings.name]),
+    singletonPlugin([home.name, settings.name, navigation.name]),
     groqdPlaygroundTool(),
     unsplashImageAsset(),
     // Vision is a tool that lets you query your content with GROQ in the studio

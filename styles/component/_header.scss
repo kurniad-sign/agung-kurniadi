@@ -1,0 +1,35 @@
+.c-header {
+  height: 5rem;
+  background-color: $background-color;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.c-nav {
+  padding: 0 4vw;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  &__logo {
+    margin-right: 2rem;
+  }
+  &__status {
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+  &__resume {
+    margin-left: auto;
+  }
+}
+
+.c__status {
+  padding: 0.5rem 1rem;
+  border: 1px solid $text-color;
+  border-radius: 25px;
+  font-size: 0.875rem;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}

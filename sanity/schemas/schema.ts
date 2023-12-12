@@ -9,6 +9,7 @@ import hero from './objects/hero';
 import project from './objects/project';
 import skills from './objects/skills';
 import home from './singletons/home';
+import navigation from './singletons/navigation';
 import settings from './singletons/settings';
 
 export const schema: { types: SchemaTypeDefinition[] } = {
@@ -23,6 +24,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     project,
     skillset,
     skills,
+    navigation,
     // sitemeta
   ],
 };

@@ -1,6 +1,6 @@
-import { InferType, q, sanityImage } from 'groqd';
 import { groq } from 'next-sanity';
 
+import { navigation } from '../types/navigation';
 import { client } from './client';
 import { home } from './types';
 
@@ -67,52 +67,29 @@ export const homeDataQuery = groq`
   }
 `;
 
+export const navigationDataQuery = groq`
+  *[_type == "navigation"][0] {
+    _id,
+    title,
+    status,
+    resume{
+      ...,
+      asset->{
+        _id,
+        url
+     }
+    }
+  }
+`;
+
 export async function makeHomeQuery() {
   return await client
     .fetch(homeDataQuery)
     .then((result) => (result ? home.parse(result) : null));
 }
 
-// GROQD Query Below
-const projectQuery = q('*')
-  .filter('_type == "project"')
-  .grab$({
-    _id: q.string(),
-    coverImage: sanityImage('coverImage'),
-    description: q.string(),
-    site: q.string(),
-    slug: q.slug('slug'),
-    title: q.string(),
-    tags: q.array(q.string()),
-  });
-
-type ProjectType = InferType<typeof projectQuery>;
-
-export const homeQuery = q('*')
-  .filter('_type == "home"')
-  .slice(1)
-  .grab$({
-    _id: q.string(),
-    about: q.object({
-      _type: q.string(),
-      description: q.string(),
-      title: q.string(),
-    }),
-    hero: q.object({
-      _type: q.string(),
-      description: q.string(),
-      scroll_text: q.string(),
-      title: q.string(),
-    }),
-    project_list: q.object({
-      _type: q.string(),
-      title: q.string(),
-      // list: projectQuery
-    }),
-    skills: q.object({
-      _type: q.string(),
-      title: q.string(),
-    }),
-  });
-
-export type HomeQueryType = InferType<typeof homeQuery>;
+export async function makeNavigationQuery() {
+  return await client
+    .fetch(navigationDataQuery)
+    .then((result) => (result ? navigation.parse(result) : null));
+}
