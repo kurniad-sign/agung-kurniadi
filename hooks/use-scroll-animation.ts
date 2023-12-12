@@ -9,7 +9,6 @@ import { useIsomorphicLayoutEffect } from './use-isomorphic';
 gsap.registerPlugin(ScrollTrigger);
 
 const useScrollPanel = () => {
-  const mainRef = useRef<HTMLElement>(null);
   const sectionAboutRef = useRef<HTMLElement>(null);
   const sectionColumnRef = useRef<HTMLDivElement>(null);
   const columnWrapRef = useRef<HTMLDivElement[]>([]);
@@ -31,13 +30,12 @@ const useScrollPanel = () => {
           endTarget: columnWrapRef,
         })
       );
-    }, mainRef);
+    }, sectionColumnRef);
 
     return () => context.revert();
   }, []);
 
   return {
-    mainRef,
     sectionColumnRef,
     sectionAboutRef,
     columnWrapRef,

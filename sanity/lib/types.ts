@@ -17,6 +17,13 @@ const Image = z.object({
   }),
 });
 
+const About = z.object({
+  _type: z.string(),
+  description: z.string(),
+  image: Image,
+  title: z.string(),
+});
+
 const Project = z.object({
   _id: z.string(),
   coverImage: Image,
@@ -49,12 +56,7 @@ const Skills = z.object({
 
 export const home = z.object({
   _id: z.string(),
-  about: z.object({
-    _type: z.string(),
-    description: z.string(),
-    image: Image,
-    title: z.string(),
-  }),
+  about: About,
   hero: z.object({
     _type: z.string(),
     description: z.string(),
@@ -68,3 +70,4 @@ export const home = z.object({
 export type HomeQueryType = z.infer<typeof home>;
 export type ProjectListQuery = z.infer<typeof ProjectList>;
 export type SkillsQuery = z.infer<typeof Skills>;
+export type AboutQuery = z.infer<typeof About>;
