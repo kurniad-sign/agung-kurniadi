@@ -7,6 +7,7 @@ export const revealImageAnimation = (target: HTMLImageElement | null) => {
     ease: 'power3',
     duration: 1.5,
     scale: 1,
+    alpha: 1,
     clipPath: 'inset(0% 0% 0% 0%)',
   });
 
