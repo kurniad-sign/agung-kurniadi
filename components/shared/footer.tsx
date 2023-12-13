@@ -1,10 +1,19 @@
 'use client';
 
+import { MouseEvent } from 'react';
 import Image from 'next/image';
 import LogoBlack from '@/public/images/logo-black.svg';
 import { ArrowUp, Mail, Phone } from 'lucide-react';
 
 export function Footer() {
+  const scrollToTop = (event: MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault();
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+
   return (
     <>
       <div className="c-footer c-footer__primary">
@@ -79,7 +88,7 @@ export function Footer() {
           <p className="c-footer__copy-text">
             © Agung Kurniadi 2023. Allright Reserved.
           </p>
-          <a href="#section-hero" className="c-footer__copy-top">
+          <a className="c-footer__copy-top" onClick={scrollToTop}>
             Back to Top <ArrowUp />
           </a>
         </div>
