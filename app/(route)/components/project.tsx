@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import Image from 'next/image';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -19,6 +19,13 @@ export function Project({ list, title }: ProjectListQuery) {
   const scrollWrapperRef = useRef<HTMLDivElement>(null);
   const projectRef = useRef<HTMLElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
+  const cursorRef = useRef<HTMLDivElement>(null);
+  const listProjectRef = useRef<HTMLLIElement[]>([]);
+
+  const [isHover, setIsHover] = useState<{ active: boolean; index: number }>({
+    active: false,
+    index: 0,
+  });
 
   const { ref, inView } = useInView({
     triggerOnce: true,
@@ -68,6 +75,26 @@ export function Project({ list, title }: ProjectListQuery) {
     };
   }, [inView]);
 
+  useIsomorphicLayoutEffect(() => {
+    let xMoveCursor = gsap.quickTo(cursorRef.current, 'left', {
+      duration: 0.5,
+      ease: 'power3',
+    });
+
+    let yMoveCursor = gsap.quickTo(cursorRef.current, 'top', {
+      duration: 0.5,
+      ease: 'power3',
+    });
+
+    listProjectRef.current.forEach((list, index) => {
+      if (isHover.active || isHover.index)
+        list.addEventListener('mousemove', (event) => {
+          xMoveCursor(event.clientY);
+          yMoveCursor(event.clientY);
+        });
+    });
+  }, []);
+
   return (
     <section className="section section--project" ref={projectRef}>
       <div className="container" ref={ref}>
@@ -80,8 +107,19 @@ export function Project({ list, title }: ProjectListQuery) {
         </h2>
         <div className="project__list__wrapper" ref={scrollWrapperRef}>
           <ul className="project__list" ref={scrollContainerRef}>
-            {list.map((project) => (
-              <li key={project._id} className="project__list__item">
+            {list.map((project, index) => (
+              <li
+                key={project._id}
+                className="project__list__item"
+                ref={(el) =>
+                  (listProjectRef.current[index] = el as HTMLLIElement)
+                }
+                onMouseEnter={() => setIsHover({ active: true, index })}
+                onMouseLeave={() => setIsHover({ active: false, index })}
+              >
+                {/* <div className="project__list__mouse" ref={cursorRef}>
+                  Visit
+                </div> */}
                 <figure className="project__list__item__image">
                   <div className="project__list__item__content">
                     <div>

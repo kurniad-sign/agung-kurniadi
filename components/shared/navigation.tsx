@@ -56,7 +56,7 @@ export function Navigation({
     <header className="c-header">
       <nav className="c-nav">
         <div className="c-nav__logo">
-          <Image src={LogoBlack} alt="Logo" width={60} height={60} />
+          <Image src={LogoBlack} alt="Logo" width={50} height={50} />
         </div>
         <div className="c-nav__status">
           <div className="c__status">

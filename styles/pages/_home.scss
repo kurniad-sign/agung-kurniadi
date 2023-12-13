@@ -200,8 +200,7 @@
   &__title {
     font-size: 3rem;
     font-weight: 600;
-    margin-bottom: 4rem;
-    line-height: 1;
+    margin-bottom: 3rem;
     letter-spacing: -1.5px;
   }
   &__description {
@@ -235,6 +234,7 @@
     width: fit-content;
     height: 100vh;
     min-height: 30em;
+    position: relative;
     @include media('<=tablet') {
       overflow-x: hidden;
     }
@@ -244,6 +244,23 @@
       flex-wrap: nowrap;
       scroll-snap-align: start;
       cursor: pointer;
+    }
+    &__mouse {
+      position: absolute;
+      color: $text-color;
+      top: 0;
+      z-index: 200;
+      background-color: $background-color;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 1.25rem;
+      box-shadow: 0px 2px 5px -1px rgba(0, 0, 0, 0.25);
+      // scale: 0;
     }
     &__item__image {
       position: relative;
