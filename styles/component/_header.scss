@@ -1,9 +1,11 @@
 .c-header {
   height: 5rem;
-  background-color: $background-color;
-  position: absolute;
+  // background-color: $background-color;
+  position: fixed;
   top: 0;
+  z-index: 99;
   width: 100%;
+  will-change: transform;
 }
 
 .c-nav {
@@ -27,9 +29,10 @@
 .c__status {
   padding: 0.5rem 1rem;
   border: 1px solid $text-color;
+  mix-blend-mode: difference;
   border-radius: 25px;
   font-size: 0.875rem;
-  font-weight: 500;
+  font-weight: 600;
   display: flex;
   align-items: center;
   gap: 0.25rem;
