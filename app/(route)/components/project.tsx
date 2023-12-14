@@ -107,7 +107,7 @@ export function Project({ list, title }: ProjectListQuery) {
                         href={project.site}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="project__list__item__link"
+                        className="c-link project__list__item__link"
                       >
                         Visit Site
                         <ArrowUpRight size={24} />

@@ -306,13 +306,12 @@
       line-height: 1.5;
     }
     &__item__link {
-      display: inline-flex;
-      align-items: center;
       margin-top: auto;
       color: $background-color;
       font-size: 1.25rem;
       font-weight: 600;
       text-decoration: none;
+      width: fit-content;
       svg {
         margin-inline-start: 0.25rem;
       }
