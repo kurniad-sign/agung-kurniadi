@@ -1,5 +1,6 @@
 import { Footer } from '@/components/shared/footer';
 import { Navigation } from '@/components/shared/navigation';
+import { PreloaderWrapper } from '@/components/shared/preloader-wrapper';
 import { makeNavigationQuery } from '@/sanity/lib/queries';
 import { NavigationType } from '@/sanity/types/navigation';
 
@@ -12,9 +13,11 @@ export default async function PageLayout({
 
   return (
     <>
-      <Navigation data={navigation} />
-      {children}
-      <Footer />
+      <PreloaderWrapper>
+        <Navigation data={navigation} />
+        {children}
+        <Footer />
+      </PreloaderWrapper>
     </>
   );
 }

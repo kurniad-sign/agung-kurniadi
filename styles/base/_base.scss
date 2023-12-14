@@ -68,3 +68,15 @@ a {
   transform: translateY(100%);
   will-change: transform;
 }
+
+[data-animation='text-reveal-side'] div {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+}
+
+[data-animation='text-reveal-side'] div div {
+  display: inline-block;
+  transform: translateX(-100%);
+  will-change: transform;
+}
