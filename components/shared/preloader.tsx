@@ -11,7 +11,6 @@ export function Preloader({ timeline }: { timeline: GSAPTimeline | null }) {
   const logoRef = useRef<HTMLImageElement>(null);
   const headingRef = useRef<HTMLHeadingElement>(null);
   const quotesRef = useRef<HTMLQuoteElement>(null);
-  const progressRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const textSplitted = new SplitType(

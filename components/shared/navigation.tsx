@@ -17,6 +17,14 @@ export function Navigation({
   const [isNavVisible, setIsNavVisible] = useState(false);
 
   useIsomorphicLayoutEffect(() => {
+    gsap.to('.c-header', {
+      y: '0%',
+      duration: 1,
+      ease: 'power3.inOut',
+    });
+  }, []);
+
+  useIsomorphicLayoutEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
 
