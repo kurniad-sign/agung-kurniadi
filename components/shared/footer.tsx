@@ -27,10 +27,16 @@ export function Footer() {
                 Feel free to reach out if you want for simply have a chat
               </p>
               <div className="c-footer__contact-list">
-                <a className="c-link c-footer__contact-item" href="">
+                <a
+                  className="c-link c-footer__contact-item"
+                  href="mailto:agungkurniadi99@gmail.com"
+                >
                   <Mail size={18} /> agungkurniadi99@gmail.com
                 </a>
-                <a className="c-link c-footer__contact-item" href="">
+                <a
+                  className="c-link c-footer__contact-item"
+                  href="https://api.whatsapp.com/send?phone=08992406200"
+                >
                   <Phone size={18} /> +628992406200
                 </a>
               </div>

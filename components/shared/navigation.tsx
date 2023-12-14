@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import LogoBlack from '@/public/images/logo-black.svg';
 import gsap from 'gsap';
 import { Dot, FileDown } from 'lucide-react';
@@ -64,7 +65,9 @@ export function Navigation({
     <header className="c-header">
       <nav className="c-nav">
         <div className="c-nav__logo">
-          <Image src={LogoBlack} alt="Logo" width={50} height={50} />
+          <Link href="/">
+            <Image src={LogoBlack} alt="Logo" width={50} height={50} />
+          </Link>
         </div>
         <div className="c-nav__status">
           <div className="c__status">
