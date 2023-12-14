@@ -1,8 +1,11 @@
+import { makeSafeQueryRunner, q } from 'groqd';
 import { groq } from 'next-sanity';
 
 import { navigation } from '../types/navigation';
 import { client } from './client';
 import { home } from './types';
+
+const runQuery = makeSafeQueryRunner((query) => client.fetch(query));
 
 export const homeDataQuery = groq`
   *[_type == "home"][1]{
@@ -81,6 +84,13 @@ export const navigationDataQuery = groq`
     }
   }
 `;
+
+export const metaHomeQuery = await runQuery(
+  q('*').filter('_type == "home"').slice(1).grab$({
+    title: q.string(),
+    overview: q.string(),
+  })
+);
 
 export async function makeHomeQuery() {
   return await client
