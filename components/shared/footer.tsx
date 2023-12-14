@@ -27,10 +27,10 @@ export function Footer() {
                 Feel free to reach out if you want for simply have a chat
               </p>
               <div className="c-footer__contact-list">
-                <a className="c-footer__contact-item" href="">
+                <a className="c-link c-footer__contact-item" href="">
                   <Mail size={18} /> agungkurniadi99@gmail.com
                 </a>
-                <a className="c-footer__contact-item" href="">
+                <a className="c-link c-footer__contact-item" href="">
                   <Phone size={18} /> +628992406200
                 </a>
               </div>
@@ -40,7 +40,7 @@ export function Footer() {
               <ul className="c-footer__social-list">
                 <li className="c-footer__social-item">
                   <a
-                    className="c-footer__social-link"
+                    className="c-link c-footer__social-link"
                     href="https://www.linkedin.com/in/agung-kurniadi/"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -50,7 +50,7 @@ export function Footer() {
                 </li>
                 <li className="c-footer__social-item">
                   <a
-                    className="c-footer__social-link"
+                    className="c-link c-footer__social-link"
                     href="https://github.com/kurniad-sign"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -60,7 +60,7 @@ export function Footer() {
                 </li>
                 <li className="c-footer__social-item">
                   <a
-                    className="c-footer__social-link"
+                    className="c-link c-footer__social-link"
                     href="https://medium.com/@kurniagung.io"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -70,7 +70,7 @@ export function Footer() {
                 </li>
                 <li className="c-footer__social-item">
                   <a
-                    className="c-footer__social-link"
+                    className="c-link c-footer__social-link"
                     href="https://codepen.io/kurniad-sign"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -88,7 +88,7 @@ export function Footer() {
           <p className="c-footer__copy-text">
             © Agung Kurniadi 2023. Allright Reserved.
           </p>
-          <a className="c-footer__copy-top" onClick={scrollToTop}>
+          <a className="c-link c-footer__copy-top" onClick={scrollToTop}>
             Back to Top <ArrowUp />
           </a>
         </div>

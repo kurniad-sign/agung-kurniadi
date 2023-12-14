@@ -17,32 +17,10 @@
       font-weight: 500;
     }
     &-top {
-      display: inline-flex;
-      align-items: center;
-      position: relative;
-      cursor: pointer;
       & > svg {
         margin-inline-start: 0.5rem;
         height: 18px;
         width: 18px;
-      }
-      &::after {
-        content: '';
-        background-color: currentColor;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        height: 2px;
-        width: 100%;
-        transform-origin: 100% 50%;
-        transform: scale3d(0, 1, 1);
-        transition: transform 0.5s $motion;
-        pointer-events: none;
-      }
-
-      &:hover:after {
-        transform-origin: 0% 50%;
-        transform: scale3d(1, 1, 1);
       }
     }
   }
@@ -69,33 +47,12 @@
       gap: 0.5rem;
     }
     &-item {
-      display: inline-flex;
-      align-items: center;
       font-size: 1.125rem;
       font-weight: 500;
-      position: relative;
       letter-spacing: -0.3px;
       width: fit-content;
       & > svg {
         margin-inline-end: 0.5rem;
-      }
-      &::after {
-        content: '';
-        background-color: currentColor;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        height: 2px;
-        width: 100%;
-        transform-origin: 100% 50%;
-        transform: scale3d(0, 1, 1);
-        transition: transform 0.5s $motion;
-        pointer-events: none;
-      }
-
-      &:hover:after {
-        transform-origin: 0% 50%;
-        transform: scale3d(1, 1, 1);
       }
     }
   }
@@ -114,33 +71,12 @@
       gap: 0.25rem;
     }
     &-link {
-      display: inline-flex;
-      align-items: center;
       font-size: 1.125rem;
       letter-spacing: -0.3px;
       color: $text-secondary-color;
-      position: relative;
       font-weight: 600;
       & > svg {
         margin-inline-start: 0.25rem;
-      }
-      &::after {
-        content: '';
-        background-color: currentColor;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        height: 2px;
-        width: 100%;
-        transform-origin: 100% 50%;
-        transform: scale3d(0, 1, 1);
-        transition: transform 0.5s $motion;
-        pointer-events: none;
-      }
-
-      &:hover:after {
-        transform-origin: 0% 50%;
-        transform: scale3d(1, 1, 1);
       }
     }
   }

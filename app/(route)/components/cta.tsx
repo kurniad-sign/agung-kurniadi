@@ -5,9 +5,11 @@ import { RunningText } from '@/components/shared/running-text';
 export function CallToAction() {
   return (
     <section className="section section--cta">
-      <RunningText>
-        Let&apos;s Talk <Asterisk />
-      </RunningText>
+      <div className="c-running-animation">
+        <RunningText>
+          Let&apos;s Talk <Asterisk />
+        </RunningText>
+      </div>
     </section>
   );
 }
