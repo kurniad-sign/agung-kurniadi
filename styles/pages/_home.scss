@@ -88,6 +88,10 @@
       display: grid;
       grid-template-columns: repeat(12, 1fr);
       gap: 2rem;
+      @include media('<=tablet') {
+        grid-template-columns: repeat(4, 1fr);
+        row-gap: 8rem;
+      }
     }
   }
   &--project {
@@ -107,26 +111,39 @@
     position: relative;
     min-height: 0vh;
     border-bottom: 1px solid $border-color;
+    @include media('<=tablet') {
+      padding-bottom: 0;
+    }
   }
 }
 
 .hero {
   &__header {
     margin-bottom: 7rem;
+    @include media('<=tablet') {
+      margin-bottom: 8vh;
+    }
   }
   &__content {
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
     gap: 2rem;
+    @include media('<=tablet') {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 4rem;
+    }
   }
   &__title {
     font-size: calc(100vw / 1440 * 142);
-    // text-wrap: wrap;
     text-transform: uppercase;
     letter-spacing: -2.96px;
     line-height: 1;
     font-weight: 650;
+    @include media('<=tablet') {
+      font-size: calc(100vw / 768 * 78);
+    }
   }
   &__description {
     font-size: 2.25rem;
@@ -134,6 +151,10 @@
     font-stretch: extra-condensed;
     width: 35rem;
     letter-spacing: -0.3px;
+    @include media('<=tablet') {
+      width: 100%;
+      font-size: 1.75rem;
+    }
   }
   &__time {
     & p {
@@ -150,7 +171,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    // margin-left: auto;
+    @include media('<=tablet') {
+      display: none;
+    }
   }
   &__scroll-text {
     width: 100%;
@@ -180,12 +203,18 @@
   }
   &__content {
     grid-column: 7 / span 5;
+    @include media('<=tablet') {
+      grid-column: 1 / -1;
+    }
   }
   &__image {
     grid-column: 2 / span 4;
     position: relative;
     height: 600px;
     overflow: hidden;
+    @include media('<=tablet') {
+      grid-column: 1 / -1;
+    }
     img {
       scale: 1.2;
       object-fit: cover;
@@ -338,11 +367,20 @@
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     gap: 2rem;
+    @include media('<=tablet') {
+      grid-template-columns: repeat(4, 1fr);
+    }
   }
   &__header {
     border-right: 1px solid $border-color;
     grid-column: 1 / span 5;
     padding-top: 6rem;
+    @include media('<=tablet') {
+      grid-column: 1 / -1;
+      border-right: none;
+      padding-top: 4rem;
+      padding-bottom: 2rem;
+    }
   }
   &__title {
     font-size: 4rem;
@@ -355,6 +393,11 @@
     flex-direction: column;
     gap: 3rem;
     padding: 6rem 2rem;
+    @include media('<=tablet') {
+      grid-column: 1 / -1;
+      margin: 0 -4vw;
+      border-top: 1px solid $border-color;
+    }
     &__title {
       font-size: 1.5rem;
       font-family: var(--font-manrope), sans-serif;

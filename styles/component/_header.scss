@@ -36,6 +36,9 @@
   display: flex;
   align-items: center;
   gap: 0.25rem;
+  @include media('<=tablet') {
+    display: none;
+  }
   & > svg {
     height: 14px;
     width: 14px;
