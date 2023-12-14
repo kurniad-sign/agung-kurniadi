@@ -15,7 +15,7 @@
   min-height: 100vh;
   background-color: $background-color;
   &--hero {
-    margin-bottom: 200vh;
+    margin-bottom: 150vh;
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -253,7 +253,9 @@
     text-transform: uppercase;
     line-height: 1;
     font-weight: 700;
-    // width: 35rem;
+    @include media('<tablet') {
+      font-size: 4rem;
+    }
   }
   &__list {
     display: flex;
