@@ -35,7 +35,9 @@ export function Footer() {
                 </a>
                 <a
                   className="c-link c-footer__contact-item"
-                  href="https://api.whatsapp.com/send?phone=08992406200"
+                  href="https://wa.me/+628992406200"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   <Phone size={18} /> +628992406200
                 </a>
