@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import { q } from 'groqd';
 
+import { Cursor } from '@/components/shared/cursor';
 import { Footer } from '@/components/shared/footer';
 import { Navigation } from '@/components/shared/navigation';
 import { PreloaderWrapper } from '@/components/shared/preloader-wrapper';
@@ -47,6 +48,7 @@ export default async function PageLayout({
         <Navigation data={navigation} />
         {children}
         <Footer />
+        <Cursor />
       </PreloaderWrapper>
     </>
   );

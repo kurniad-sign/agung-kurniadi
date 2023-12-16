@@ -1,0 +1,14 @@
+.c-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 100%;
+  background-color: #f7f8fa;
+  mix-blend-mode: difference;
+  opacity: 0;
+  z-index: 10000;
+  user-select: none;
+  pointer-events: none;
+}
